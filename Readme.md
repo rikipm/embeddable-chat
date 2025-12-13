@@ -14,4 +14,4 @@
 9. `docker compose exec php php artisan migrate`
 10. `docker compose exec php npm install`
 11. `docker compose exec php npm run build`
-12. Для HMR: `docker compose exec npm run dev`
+12. Для HMR: `docker compose exec php npm run dev`
