@@ -84,7 +84,7 @@ function sendMessage(): void {
 </script>
 
 <template>
-    <div class="fixed inset-0 flex h-full w-full flex-col bg-white">
+    <div class="fixed inset-0 flex h-full w-full flex-col bg-white rounded-lg">
         <div class="flex items-center justify-between rounded-t-lg bg-orange-500 p-3 text-white">
             <h3 class="font-medium">Embeddable chat</h3>
             <button @click="newChat" class="cursor-pointer rounded bg-orange-600 px-5 py-3 text-sm text-white transition-colors hover:bg-orange-700">
