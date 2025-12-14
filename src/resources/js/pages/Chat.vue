@@ -113,6 +113,7 @@ function sendMessage(): void {
         <div class="border-t border-gray-200 p-3">
             <form class="flex" @submit.prevent="sendMessage">
                 <input
+                    name="message"
                     v-model="newMessage"
                     type="text"
                     placeholder="Введите сообщение..."
