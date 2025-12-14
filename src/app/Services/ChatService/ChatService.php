@@ -14,6 +14,7 @@ class ChatService
 {
     public function __construct(
         protected string $model = 'nousresearch/hermes-3-llama-3.1-405b:free',
+        protected int $maxTokens = 100,
     ) {}
 
     public function message(string $conversationId, string $message): string
@@ -65,7 +66,7 @@ class ChatService
         $chatData = new ChatData(
             messages: $messagesData,
             model: $this->model,
-            max_tokens: 100,
+            max_tokens: $this->maxTokens,
         );
 
         return LaravelOpenRouter::chatRequest($chatData)->choices[0]['message']['content'];
