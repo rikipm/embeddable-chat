@@ -41,7 +41,6 @@ function sendMessage(): void {
     });
 
     isBotAnswering.value = true;
-    console.log(isBotAnswering);
     fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -76,7 +75,6 @@ function sendMessage(): void {
         })
         .finally(function () {
             isBotAnswering.value = false;
-            console.log(isBotAnswering);
         });
 
     newMessage.value = '';
