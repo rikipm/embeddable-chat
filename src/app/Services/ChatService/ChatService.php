@@ -43,7 +43,7 @@ class ChatService
     /**
      * @param  Collection<ChatMessage>  $chatMessages
      */
-    public function generateNextMessage(Collection $chatMessages): mixed
+    public function generateNextMessage(Collection $chatMessages): string
     {
         /** @var MessageData[] $messagesData */
         $messagesData[] = new MessageData(
