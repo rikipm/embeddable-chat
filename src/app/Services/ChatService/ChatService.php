@@ -5,14 +5,15 @@ namespace App\Services\ChatService;
 use App\Enums\SenderEnum;
 use App\Models\ChatMessage;
 use Illuminate\Support\Collection;
-use LaravelOpenRouter;
 use MoeMizrak\LaravelOpenrouter\DTO\ChatData;
 use MoeMizrak\LaravelOpenrouter\DTO\MessageData;
 use MoeMizrak\LaravelOpenrouter\Types\RoleType;
+use MoeMizrak\LaravelOpenrouter\OpenRouterRequest;
 
 class ChatService
 {
     public function __construct(
+        protected OpenRouterRequest $openRouterRequest,
         protected string $model = 'nousresearch/hermes-3-llama-3.1-405b:free',
         protected int $maxTokens = 100,
     ) {}
@@ -69,6 +70,6 @@ class ChatService
             max_tokens: $this->maxTokens,
         );
 
-        return LaravelOpenRouter::chatRequest($chatData)->choices[0]['message']['content'];
+        return $this->openRouterRequest->chatRequest($chatData)->choices[0]['message']['content'];
     }
 }
