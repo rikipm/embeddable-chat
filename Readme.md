@@ -15,3 +15,9 @@
 10. `docker compose exec php npm install`
 11. `docker compose exec php npm run build`
 12. Для HMR: `docker compose exec php npm run dev`
+
+# Запуск тестов
+
+`docker compose exec php php artisan test`
+
+Тесты проводятся в in-memory sqlite. В реальном проекте я бы создал вторую БД postgres.
