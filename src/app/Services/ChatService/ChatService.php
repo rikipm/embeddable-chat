@@ -60,7 +60,7 @@ class ChatService
         foreach ($chatMessages as $previousMessage) {
             $messagesData[] = new MessageData(
                 $previousMessage->message,
-                $previousMessage->sender === 'user' ? 'user' : 'assistant', // Нужно для конвертации между внутренним энумом и форматом OpenAI
+                $previousMessage->sender === SenderEnum::USER ? RoleType::USER : RoleType::ASSISTANT, // Нужно для конвертации между внутренним энумом и форматом OpenAI
             );
         }
 
