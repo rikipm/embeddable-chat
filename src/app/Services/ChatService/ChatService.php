@@ -7,8 +7,8 @@ use App\Models\ChatMessage;
 use Illuminate\Support\Collection;
 use MoeMizrak\LaravelOpenrouter\DTO\ChatData;
 use MoeMizrak\LaravelOpenrouter\DTO\MessageData;
-use MoeMizrak\LaravelOpenrouter\Types\RoleType;
 use MoeMizrak\LaravelOpenrouter\OpenRouterRequest;
+use MoeMizrak\LaravelOpenrouter\Types\RoleType;
 
 class ChatService
 {
