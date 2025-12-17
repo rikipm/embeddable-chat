@@ -48,6 +48,7 @@ function sendMessage(): void {
         text: newMessage.value,
         time: time,
     });
+    scrollableAreaDiv.value.scrollTo({ top: scrollableAreaDiv.value.scrollHeight, behavior: 'smooth' });
 
     isBotAnswering.value = true;
     fetch('/api/chat', {
