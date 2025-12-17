@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid';
-import { ref, useTemplateRef } from 'vue';
+import { nextTick, ref, useTemplateRef, watch } from 'vue';
 
 interface Message {
     sender: 'user' | 'assistant';
@@ -48,7 +48,6 @@ function sendMessage(): void {
         text: newMessage.value,
         time: time,
     });
-    scrollableAreaDiv.value.scrollTo({ top: scrollableAreaDiv.value.scrollHeight, behavior: 'smooth' });
 
     isBotAnswering.value = true;
     fetch('/api/chat', {
@@ -85,11 +84,18 @@ function sendMessage(): void {
         })
         .finally(function () {
             isBotAnswering.value = false;
-            scrollableAreaDiv.value.scrollTo({ top: scrollableAreaDiv.value.scrollHeight, behavior: 'smooth' });
         });
 
     newMessage.value = '';
 }
+
+watch(
+    messages,
+    () => {
+        nextTick(() => scrollableAreaDiv.value.scrollTo({ top: scrollableAreaDiv.value.scrollHeight, behavior: 'smooth' }));
+    },
+    { deep: true },
+);
 </script>
 
 <template>
