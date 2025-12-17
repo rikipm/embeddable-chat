@@ -132,7 +132,7 @@ watch(
                     v-model="newMessage"
                     type="text"
                     placeholder="Введите сообщение..."
-                    class="flex-1 rounded-l-lg border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                    class="min-w-24 flex-1 rounded-l-lg border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
                     :disabled="isBotAnswering"
                     required
                 />
