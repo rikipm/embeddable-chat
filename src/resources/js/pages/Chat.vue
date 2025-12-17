@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
+import { ref, useTemplateRef } from 'vue';
 
 interface Message {
     sender: 'user' | 'assistant';
@@ -19,6 +19,8 @@ const messages = ref<Message[]>();
 const isBotAnswering = ref(false);
 
 let conversationId: string;
+
+const scrollableAreaDiv = useTemplateRef('scrollable-area-div');
 
 function getTime(): string {
     return new Date().toLocaleTimeString();
@@ -82,6 +84,7 @@ function sendMessage(): void {
         })
         .finally(function () {
             isBotAnswering.value = false;
+            scrollableAreaDiv.value.scrollTo({ top: scrollableAreaDiv.value.scrollHeight, behavior: 'smooth' });
         });
 
     newMessage.value = '';
@@ -89,7 +92,7 @@ function sendMessage(): void {
 </script>
 
 <template>
-    <div class="fixed inset-0 flex h-full w-full flex-col bg-white rounded-lg">
+    <div class="fixed inset-0 flex h-full w-full flex-col rounded-lg bg-white">
         <div class="flex items-center justify-between rounded-t-lg bg-orange-500 p-3 text-white">
             <h3 class="font-medium">Embeddable chat</h3>
             <button @click="newChat" class="cursor-pointer rounded bg-orange-600 px-5 py-3 text-sm text-white transition-colors hover:bg-orange-700">
@@ -97,7 +100,7 @@ function sendMessage(): void {
             </button>
         </div>
 
-        <div class="flex-1 overflow-y-auto p-3">
+        <div class="flex-1 overflow-y-auto p-3" ref="scrollable-area-div">
             <div v-for="(message, index) in messages" :key="index" class="mb-3">
                 <div :class="['rounded-lg p-2 shadow-md', message.sender === 'user' ? 'ml-auto bg-orange-100' : 'mr-auto bg-gray-100', 'max-w-xs']">
                     <p class="text-sm">{{ message.text }}</p>
