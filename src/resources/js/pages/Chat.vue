@@ -25,7 +25,13 @@ function getTime(): string {
 
 function newChat(): void {
     messages.value = [{ sender: 'assistant', text: 'Привет! Я робот помощник. Буду рад ответить на ваши вопросы!', time: getTime() }];
-    conversationId = crypto.randomUUID();
+    conversationId = crypto.getRandomValues(new Uint32Array(2)).join('');
+    /*
+    В реальном проекте я бы использовал `conversationId = crypto.randomUUID();`, однако
+    1. crypto.randomUUID() доступен только в secure context.
+    2. Для secure context требуется HTTPS соединение и следовательно SSL сертификат.
+    3. Получать SSL сертификат для данного проекта - это перебор.
+     */
 }
 
 newChat();
