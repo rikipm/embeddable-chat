@@ -21,4 +21,4 @@
 
 `docker compose exec php php artisan test`
 
-Тесты проводятся в in-memory sqlite. В реальном проекте я бы создал вторую БД postgres.
+Тесты проводятся в in-memory sqlite.
