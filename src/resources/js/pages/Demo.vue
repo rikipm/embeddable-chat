@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { Head } from '@inertiajs/vue3';
 const origin = window.location.origin;
 </script>
 
 <template>
+    <Head title="Embeddable chat" />
     <div class="min-h-screen bg-indigo-500 flex items-center justify-center p-4">
         <div class="w-full max-w-4xl bg-indigo-400 rounded-lg shadow-lg p-8">
             <div class="space-y-4">
